@@ -1,0 +1,57 @@
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: number
+        error:
+          type: string
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        catId:
+          type: string
+        create_date:
+          type: Date
+      example:
+        id: 5ebac534954b54139806c112
+        title: category1
+        catId: cat1
+        create_date: 2021-09-24T22:09:07.485Z
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+        categories:
+          type: Array
+        sellerName:
+          type: string
+        brand:
+          type: string
+        create_date:
+          type: Date
+      example:
+        id: 5ebac534954b54139806c112
+        name: product1
+        price: 100
+        categories: [category1,category2,category3]
+        sellerName: seller1
+        brand: brand1
+        create_date: 2021-09-24T22:09:07.485Z
+
+  
+    
+   
+  
