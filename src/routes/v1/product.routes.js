@@ -41,9 +41,19 @@ module.exports = router;
  *             properties:
  *               name:
  *                 type: string
- *                 description: must be unique
+ *                 description: Name is required,can be alphanumeric and should have minimum length3
  *               price:
  *                 type: number
+ *                 description: Price is required and it should be a number
+ *               sellerName:
+ *                 type: string
+ *                 description: Seller name should be a string,can be alphanumeric and minimum length 3
+ *               brand:
+ *                 type: string
+ *                 description: Brand should be a string
+ *               categories:
+ *                 type: Array
+ *                 description: Categories should be an array of unique string,each elment min length 3
  *                
  *             example:
  *                  name: product1
@@ -145,15 +155,19 @@ module.exports = router;
  *             properties:
  *               name:
  *                 type: string
- *                 description: must be unique
+ *                 description: Name is required,can be alphanumeric and should have minimum length 3
  *               price:
  *                 type: Number
+ *                 description: Price should be a number
  *               categories:
  *                 type: Array
+ *                 description: Categories should be an array of unique string,each elment min length 3
  *               brand:
  *                 type: string
+ *                 description: Brand should be a string
  *               sellerName:
- *                 type:string
+ *                 type: string
+ *                 description: Seller name should be a string,can be alphanumeric and minimum length 3
  *             example:
  *               name: product1
  *               price: 100

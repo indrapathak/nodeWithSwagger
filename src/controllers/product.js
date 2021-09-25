@@ -4,7 +4,6 @@ const { check, validationResult } = require("express-validator")
 
 async function inputValidator(req, res) {
     const errors = await validationResult(req)
-    console.log("Inside Send Validator", errors)
     if (!errors.isEmpty()) {
         return res.status(400).send({ "message": "Validation failed", "error": errors.errors })
     }
@@ -139,13 +138,12 @@ async function addProduct(req, res) {
                     return res.status(200).send({ "message": "Product Added Successfully" })
                 })
                 .catch(e => {
-                    //to return db query errors
                     console.log("Error:", e)
                     if (e.code === 11000) {
-                        return res.status(400).send({ "message": "Product already exists", "error": e })
+                        return res.status(400).send({ "error": "Product already exists", "error": e })
                     }
                     else {
-                        return res.status(400).send({ "message": "Product Server Error!", "error": e })
+                        return res.status(400).send({ "error": "Product Server Error!", "error": e })
                     }
                 })
         }
@@ -224,15 +222,15 @@ async function updateProduct(req, res) {
                         return res.status(200).send({ "message": "product Details Updated Successfully" })
                     }
                     else if (status.n == 1 && status.nModified == 0) {
-                        return res.status(400).send({ "message": "product Details Already Updated" })
+                        return res.status(400).send({ "error": "product Details Already Updated" })
                     }
                     else {
-                        return res.status(400).send({ "message": "product Not Found" })
+                        return res.status(400).send({ "error": "product Not Found" })
                     }
                 })
                 .catch(e => {
                     console.log("Query catch error", e)
-                    return res.status(400).send({ "message": "Server Error" })
+                    return res.status(400).send({ "error": "Server Error" })
                 })
         }
         catch (e) {

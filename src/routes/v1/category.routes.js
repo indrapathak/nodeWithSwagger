@@ -41,9 +41,10 @@ module.exports = router;
  *             properties:
  *               title:
  *                 type: string
+ *                 description: title must be string,canBe alphanumeric and minimum length 3
  *               catId:
  *                 type: string
- *                 description: must be unique
+ *                 description: must be string,unique,have minumum length3
  *             example:
  *               title: category1
  *               catId: catId
@@ -143,6 +144,7 @@ module.exports = router;
  *             properties:
  *               title:
  *                 type: string
+ *             description: title must be string,canBe alphanumeric and minimum length 3
  *             example:
  *               title: category1
  *     responses:

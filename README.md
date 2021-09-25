@@ -197,21 +197,20 @@ To view the list of available APIs and their specifications, run the server and 
 
 List of available routes:
 
-**Auth routes**:\
-`POST /v1/auth/register` - register\
-`POST /v1/auth/login` - login\
-`POST /v1/auth/refresh-tokens` - refresh auth tokens\
-`POST /v1/auth/forgot-password` - send reset password email\
-`POST /v1/auth/reset-password` - reset password\
-`POST /v1/auth/send-verification-email` - send verification email\
-`POST /v1/auth/verify-email` - verify email
 
-**User routes**:\
-`POST /v1/users` - create a user\
-`GET /v1/users` - get all users\
-`GET /v1/users/:userId` - get user\
-`PATCH /v1/users/:userId` - update user\
-`DELETE /v1/users/:userId` - delete user
+**Product routes**:\
+`POST /v1/product` - create a product\
+`GET /v1/product` - get all product\
+`GET /v1/users/:name` - get a single product\
+`PATCH /v1/users/:name` - update product\
+`DELETE /v1/users/:name` - delete product
+
+**Category routes**:\
+`POST /v1/category` - create a category\
+`GET /v1/users` - get all category\
+`GET /v1/users/:catId` - get a single category\
+`PATCH /v1/users/:catId` - update category\
+`DELETE /v1/users/:catId` - delete category
 
 ## Error Handling
 
@@ -256,22 +255,6 @@ const getUser = async (userId) => {
 };
 ```
 
-## Validation
-
-Request data is validated using [Joi](https://joi.dev/). Check the [documentation](https://joi.dev/api/) for more details on how to write Joi validation schemas.
-
-The validation schemas are defined in the `src/validations` directory and are used in the routes by providing them as parameters to the `validate` middleware.
-
-```javascript
-const express = require('express');
-const validate = require('../../middlewares/validate');
-const userValidation = require('../../validations/user.validation');
-const userController = require('../../controllers/user.controller');
-
-const router = express.Router();
-
-router.post('/users', validate(userValidation.createUser), userController.createUser);
-```
 
 ## Authentication
 

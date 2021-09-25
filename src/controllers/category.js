@@ -4,7 +4,7 @@ const { param,validationResult, check } = require("express-validator");
 
 async function inputValidator(req, res) {
     const errors = await validationResult(req)
-    console.log("Inside input Validator", errors)
+  
     if (!errors.isEmpty()) {
         return res.status(400).send({ "message": "Validation failed", "error": errors.errors })
     }
@@ -70,7 +70,7 @@ async function addCategory(req, res) {
                 return res.status(200).send({ "message": "Category Added Successfully" })
             })
             .catch(e => {
-                //to return db query errors
+               
                 console.log("Error:", e)
                 if (e.code === 11000) {
                     return res.status(400).send({ "message": "Category already exists" })
@@ -148,12 +148,7 @@ async function findCategory(req, res) {
 }
 
 async function findOneCategory(req, res) {
-    await inputValidator(req, res)
-    const errors = validationResult(req.params);
-    if (!errors.isEmpty()) {
-        return res.status(400).send({ "message": "Validation failed", "error": errors.errors })
-    }
-    else {
+   
     try {
         catrgorySchema.findOne({"catId":req.params.catId})
             .then(data => {
@@ -174,7 +169,7 @@ async function findOneCategory(req, res) {
             "error":"Error in fetching Category"
         })
     }
-}
+
 }
 
 async function deleteCategory(req, res) {
@@ -207,6 +202,5 @@ module.exports = {
     deleteCategory,
     findOneCategory,
     addCategoryValidator,
-    updateCategoryValidator,
-    fetchCategoryValidator
+    updateCategoryValidator
 }
