@@ -63,7 +63,9 @@ async function addCategory(req, res) {
     try {
         let categorData = new catrgorySchema({
             "title": req.body.title,
-            "catId" :req.body.catId
+            "catId" :req.body.catId 
+
+            
         })
         return categorData.save()
             .then(status => {

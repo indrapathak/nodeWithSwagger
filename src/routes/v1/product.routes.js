@@ -15,6 +15,7 @@ router
 .delete(product.deleteProduct)
 
 module.exports = router;
+// Below we are defining the swagger documentation things
 
 
 /**

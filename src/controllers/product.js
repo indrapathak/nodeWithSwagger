@@ -26,7 +26,7 @@ const productAddValidator = [
         .isLength({ min: 3 }).withMessage("Length should be greater then 3"),
 
     check('price')
-        .notEmpty().withMessage("Price is required")
+        .notEmpty().withMessage("Price value is required")
         .bail()
         .isNumeric().withMessage("Price should be a number")
         .bail(),
